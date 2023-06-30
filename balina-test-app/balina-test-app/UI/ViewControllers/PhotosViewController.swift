@@ -30,8 +30,8 @@ class PhotosViewController: UIViewController {
         let alert = SPAlertView.loadingAlert
         alert.present()
         Provider.standard.getPhotos { photos in
+            alert.dismiss()
             guard let photosArray = photos.photos else {
-                alert.dismiss()
                 let alert = SPAlertView(title: "Error", message: "Response doesn't contain any photos", preset: .error)
                 alert.present(haptic: .error)
                 return
